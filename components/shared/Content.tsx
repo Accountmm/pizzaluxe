@@ -3,49 +3,46 @@
 import React from 'react'
 import { Container } from './container'
 import ProductsList from './products-list'
-import { getDessertProducts, getPizzaProducts } from '@/lib/geProducts'
+import { getDessertProducts, getPizzaProducts, getSnackProducts } from '@/lib/geProducts'
 
 const Content = () => {
-  const [pizzaProducts, setPizzaProducts] = React.useState<IProduct[]>([])
-  const [dessertProducts, setDessertProducts] = React.useState<IProduct[]>([])
+  const [products, setProducts] = React.useState([
+    { products: [] as IProduct[], catalogName: '' },
+    { products: [] as IProduct[], catalogName: '' },
+    { products: [] as IProduct[], catalogName: '' }
+  ])
   const [isLoading, setIsLoading] = React.useState<boolean>(true)
 
   React.useEffect(() => {
-    async function setProducts() {
+    async function fetchProducts() {  // renamed from setProducts
       try {
-        const pizzaRes = await getPizzaProducts();
-        const dessertRes = await getDessertProducts();
-        setPizzaProducts(pizzaRes);
-        setDessertProducts(dessertRes);
+        const [pizzaRes, dessertRes, snackRes] = await Promise.all([getPizzaProducts(), getDessertProducts(), getSnackProducts()])
+        setProducts([
+          { products: pizzaRes, catalogName: 'Пицца' },
+          { products: dessertRes, catalogName: 'Десерты' },
+          { products: snackRes, catalogName: 'Закуски' }
+        ])
       } catch (error) {
         console.error("Failed to fetch products:", error);
       } finally {
         setIsLoading(false)
       }
     }
-    setProducts()
+    fetchProducts()
   }, [])
-
+  console.log(products)
   return (
     <>
       <Container >
         <div className='flex flex-col items-center justify-between'>
-          <ProductsList
-            products={[
-              ...pizzaProducts
-            ]}
-            title='Пицца'
-            isLoading={isLoading}
-            categoryName='pizza'
-          />
-          <ProductsList
-            products={[
-              ...dessertProducts
-            ]}
-            title='Десерты'
-            isLoading={isLoading}
-            categoryName='dessert'
-          />
+          {products.map(({ products, catalogName }) => (
+            <ProductsList
+              products={products}
+              title={catalogName}
+              isLoading={isLoading}
+              categoryName={catalogName}
+            />
+          ))}
         </div>
       </Container>
     </>

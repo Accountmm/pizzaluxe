@@ -18,3 +18,11 @@ export async function getDessertProducts() {
   );
   return parseStringify(response.documents);
 }
+export async function getSnackProducts() {
+  const client = await createAdminClient();
+  const response = await client.database.listDocuments(
+    process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!, // databaseId
+    process.env.NEXT_PUBLIC_APPWRITE_SNACK_ID!, // collectionId
+  );
+  return parseStringify(response.documents);
+}

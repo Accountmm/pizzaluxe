@@ -17,7 +17,7 @@ const Header: FC<IParams> = ({ className }) => {
           <div className='flex gap-4 items-center'>
             <Image src={'/logo.svg'} alt='logo' width={35} height={35} />
             <div className='flex flex-col items-start gap-2'>
-              <h1 className='text-2xl font-black uppercase'>PIZZA</h1>
+              <h1 className='text-2xl font-black uppercase'>pizzaluxe</h1>
               <p className='text-base text-gray-600 leading-3'>вкусней уже некуда</p>
             </div>
           </div>

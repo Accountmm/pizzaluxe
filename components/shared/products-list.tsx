@@ -19,7 +19,7 @@ interface IParams {
   isLoading?: boolean
 }
 
-const ProductsList: React.FC<IParams> = ({ products, title, className, listClassName, isLoading, categoryName }) => {
+const ProductsList: React.FC<IParams> = ({ products, title, className, isLoading, categoryName }) => {
   const productsLoader = new Array(8).fill(null).map((_, i) => <LoaderProduct key={i} />) // creating loader for products 
 
   const changeCategoryName = useCategoryStore((state) => state.setActiveName)
