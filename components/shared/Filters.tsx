@@ -6,7 +6,6 @@ import { FilterCheckbox } from './chechbox-filter'
 import { Input } from '../ui/input'
 import { RangeSlider } from './RangeSlider'
 import CheckboxFilterGroup from './CheckboxFilterGroup';
-import { FilterChecboxProps } from '@/types'
 
 const Divider = () => {
   return (

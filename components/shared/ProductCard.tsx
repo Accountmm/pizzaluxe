@@ -6,7 +6,6 @@ import { Button } from '../ui/button'
 import { Plus } from 'lucide-react'
 
 interface IParams {
-  // id: number
   name: string
   price: number
   imageUrl: string

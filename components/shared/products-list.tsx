@@ -13,7 +13,7 @@ interface IParams {
   title: string
   products: IProduct[]
   // categoryId: number // ?  this might be used  
-  categoryName?: string
+  categoryName: string
   listClassName?: string
   className?: string
   isLoading?: boolean
@@ -21,10 +21,7 @@ interface IParams {
 
 const ProductsList: React.FC<IParams> = ({ products, title, className, isLoading, categoryName }) => {
   const productsLoader = new Array(8).fill(null).map((_, i) => <LoaderProduct key={i} />) // creating loader for products 
-
   const changeCategoryName = useCategoryStore((state) => state.setActiveName)
-  const activeName = useCategoryStore((state) => state.activeName)
-
   const intersectionRef = React.useRef(null);
   const intersection = useIntersection(intersectionRef, {
     threshold: 1
@@ -33,9 +30,8 @@ const ProductsList: React.FC<IParams> = ({ products, title, className, isLoading
   React.useEffect(() => {
     if (intersection?.isIntersecting) {
       changeCategoryName(title)
-      console.log(title, activeName)
     }
-  }, [intersection?.isIntersecting, title])
+  }, [intersection?.isIntersecting, categoryName])
 
   return (
     <section id={categoryName} className={cn(className, 'pt-8')} >
@@ -48,7 +44,7 @@ const ProductsList: React.FC<IParams> = ({ products, title, className, isLoading
             ? products.map((product: IProduct, index: number) => (
               <ProductCard
                 key={index}
-                // id={product.name}
+                // id={product.name}/
                 imageUrl={product.image}
                 name={product.name}
                 price={product.price} // ! this might be an error from backend 
