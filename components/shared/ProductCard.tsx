@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Title } from './tittle'
 import { Button } from '../ui/button'
 import { Plus } from 'lucide-react'
 

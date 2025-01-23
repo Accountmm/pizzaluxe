@@ -2,7 +2,6 @@
 
 import React, { FC } from 'react'
 import { Input } from '../ui/input';
-import { FilterChecboxProps } from '@/types';
 import { FilterCheckbox } from './chechbox-filter';
 import { Button } from '../ui/button';
 
@@ -22,15 +21,9 @@ interface Props {
 const CheckboxFilterGroup: FC<Props> =
   ({
     items,
-    className,
     defaultItems,
-    defaultValue,
     limit = 5,
-    loading,
-    name,
-    onClickCheckbox,
     searchInputPlaceholder = 'Search',
-    selected
   }) => {
     const [showAllCheckBox, setshowAllCheckBox] = React.useState<boolean>(false)
     const [checkBoxList, setCheckBoxList] = React.useState<FilterChecboxProps[]>([])

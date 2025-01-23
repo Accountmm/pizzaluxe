@@ -1,7 +1,6 @@
 'use client'
 
 import { useIntersection } from 'react-use';
-
 import React from 'react'
 import { Title } from './tittle'
 import ProductCard from './ProductCard'
