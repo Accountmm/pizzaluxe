@@ -36,6 +36,7 @@ const Content = () => {
         <div className='flex flex-col items-center justify-between'>
           {products.map(({ products, catalogName, title }) => (
             <ProductsList
+              key={catalogName}
               products={products}
               title={title}
               isLoading={isLoading}

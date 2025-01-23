@@ -30,7 +30,7 @@ const ProductsList: React.FC<IParams> = ({ products, title, className, isLoading
     if (intersection?.isIntersecting) {
       changeCategoryName(title)
     }
-  }, [intersection?.isIntersecting, categoryName])
+  }, [intersection?.isIntersecting, categoryName, title, changeCategoryName])
 
   return (
     <section id={categoryName} className={cn(className, 'pt-8')} >

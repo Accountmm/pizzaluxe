@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Button } from '../ui/button'
 import { Plus } from 'lucide-react'
+import Image from 'next/image'
 
 interface IParams {
   name: string
@@ -16,7 +17,7 @@ const ProductCard: React.FC<IParams> = ({ className, imageUrl, name, price }) =>
       <article className={className}>
         <Link href={`/product/${name}`} >
           <div className='flex items-center justify-center  rounded-xl h-[260px]'>
-            <img src={imageUrl} alt={name} className='w-[210px] h-[210px]' />   {/* width={250} height={250} */}
+            <Image src={imageUrl} alt={name} width={250} height={250} className='w-[210px] h-[210px]' />   {/* */}
           </div>
 
           <h3 className='font-bold mt-3 text-[22px]' >{name}</h3>

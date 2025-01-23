@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dialog, DialogContent, DialogHeader } from '../ui/dialog'
+import { Dialog, DialogContent } from '../ui/dialog'
 import { cn } from '@/lib/utils'
 
 interface IParams {

@@ -33,7 +33,7 @@ const CheckboxFilterGroup: FC<Props> =
       const list = showAllCheckBox ? items : defaultItems?.slice(0, limit)
       setCheckBoxList(list)
       setCheckBoxList((checkBoxArr) => checkBoxArr.filter(checkbox => checkbox.text.toLowerCase().includes(searchValue.toLowerCase())))
-    }, [showAllCheckBox, searchValue])
+    }, [showAllCheckBox, searchValue, items, defaultItems, limit])
 
     function onChangeSearchInput(event: React.ChangeEvent<HTMLInputElement>) {
       setSearchValue(event.target.value.trim())

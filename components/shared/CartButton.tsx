@@ -2,9 +2,8 @@ import { ArrowRight, ShoppingCart } from 'lucide-react'
 import React from 'react'
 import { Button } from '../ui/button'
 
-type Props = {}
+const CartButton = () => {
 
-const CartButton = ({ }: Props) => {
   return (
     <Button className='group relative'>
       <b className='text-white text-sm font-bold'>500$</b>
